@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Bria API Inspector",
+  "version": "0.1.0",
+  "description": "Captures recent Bria API requests + responses and reports them to Excel or Jira.",
+  "permissions": [
+    "debugger",
+    "storage",
+    "activeTab",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://*.bria-api.com/*",
+    "https://*.bria.ai/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Bria API Inspector"
+  },
+  "options_page": "options.html"
+}

@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Bria API Inspector</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Bria API Inspector</h1>
+      <a id="open-options" href="#" title="Settings">⚙</a>
+    </header>
+
+    <section class="controls">
+      <button id="toggle-capture" class="primary">Start Capture</button>
+      <button id="clear">Clear</button>
+      <span id="status" class="status">idle</span>
+    </section>
+
+    <section id="empty" class="empty">No captures yet. Start capture and trigger a Bria API call.</section>
+
+    <ul id="captures" class="captures"></ul>
+
+    <template id="capture-template">
+      <li class="capture">
+        <div class="row">
+          <span class="method"></span>
+          <span class="path" title=""></span>
+          <span class="status-code"></span>
+          <span class="time"></span>
+        </div>
+        <div class="details" hidden>
+          <div class="actions">
+            <button class="send-excel">Send to Excel</button>
+            <button class="send-jira">Send to Jira</button>
+            <span class="send-status"></span>
+          </div>
+          <details>
+            <summary>Request</summary>
+            <pre class="request"></pre>
+          </details>
+          <details>
+            <summary>Response</summary>
+            <pre class="response"></pre>
+          </details>
+        </div>
+      </li>
+    </template>
+
+    <script src="reporters.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Bria API Inspector — Settings</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        max-width: 640px;
+        margin: 32px auto;
+        padding: 0 16px;
+        color: #1a1a1a;
+        font-size: 14px;
+      }
+      h1 { font-size: 20px; }
+      h2 { font-size: 16px; margin-top: 28px; }
+      label { display: block; margin: 12px 0 4px; font-weight: 600; }
+      input {
+        width: 100%;
+        padding: 8px 10px;
+        font-size: 13px;
+        border: 1px solid #d0d0d0;
+        border-radius: 4px;
+      }
+      .hint { color: #666; font-size: 12px; margin-top: 4px; }
+      button {
+        margin-top: 20px;
+        padding: 8px 16px;
+        background: #2563eb;
+        color: #fff;
+        border: 0;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 13px;
+      }
+      .saved { color: #16a34a; margin-left: 12px; font-size: 12px; }
+    </style>
+  </head>
+  <body>
+    <h1>Bria API Inspector — Settings</h1>
+
+    <h2>Excel</h2>
+    <label for="excelUrl">Excel webhook URL</label>
+    <input id="excelUrl" type="url" placeholder="https://prod-xx.westus.logic.azure.com/workflows/…/invoke?…" />
+    <div class="hint">
+      The endpoint receives a JSON POST per capture. Power Automate "When a HTTP request is received"
+      → "Add a row into a table" is the easiest path. Zapier or Make webhooks also work.
+    </div>
+
+    <h2>Jira</h2>
+    <label for="jiraUrl">Jira base URL</label>
+    <input id="jiraUrl" type="url" placeholder="https://your-org.atlassian.net" />
+
+    <label for="jiraProjectKey">Project key</label>
+    <input id="jiraProjectKey" type="text" placeholder="ABC" />
+
+    <label for="jiraEmail">Jira account email</label>
+    <input id="jiraEmail" type="email" placeholder="you@bria.ai" />
+
+    <label for="jiraApiToken">Jira API token</label>
+    <input id="jiraApiToken" type="password" placeholder="(create at id.atlassian.com → Security → API tokens)" />
+    <div class="hint">
+      Used as HTTP Basic auth: <code>base64(email:apiToken)</code>. The Jira reporter is wired as a
+      skeleton in <code>reporters.js</code> — fill in the issue-creation call when you're ready.
+    </div>
+
+    <button id="save">Save</button>
+    <span id="saved" class="saved" hidden>Saved.</span>
+
+    <script src="options.js"></script>
+  </body>
+</html>
