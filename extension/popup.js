@@ -225,6 +225,17 @@ function renderCaptureNode(cap, children) {
     }
   });
 
+  node.querySelector(".copy-clipboard").addEventListener("click", async (e) => {
+    e.stopPropagation();
+    const out = node.querySelector(".send-status");
+    try {
+      const res = await window.BriaReporters.copyToClipboard(buildExport(cap, children));
+      out.textContent = res.ok ? "copied ✓" : "Copy error: " + res.error;
+    } catch (err) {
+      out.textContent = "Copy error: " + (err.message || err);
+    }
+  });
+
   return node;
 }
 
