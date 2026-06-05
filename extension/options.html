@@ -39,12 +39,12 @@
   <body>
     <h1>Bria API Inspector — Settings</h1>
 
-    <h2>Excel</h2>
-    <label for="excelUrl">Excel webhook URL</label>
-    <input id="excelUrl" type="url" placeholder="https://prod-xx.westus.logic.azure.com/workflows/…/invoke?…" />
+    <h2>Model Feedback Hub</h2>
+    <label for="sheetsUrl">Google Sheet URL</label>
+    <input id="sheetsUrl" type="url" placeholder="https://docs.google.com/spreadsheets/d/…/edit" />
     <div class="hint">
-      The endpoint receives a JSON POST per capture. Power Automate "When a HTTP request is received"
-      → "Add a row into a table" is the easiest path. Zapier or Make webhooks also work.
+      Paste the full URL of the feedback spreadsheet. The extension uses your signed-in Google
+      account to append a row — make sure you have edit access to the sheet.
     </div>
 
     <h2>Jira</h2>

@@ -1,17 +1,24 @@
 {
   "manifest_version": 3,
   "name": "Bria API Inspector",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAogxJWi5KTtaxuN9f8vUCc8J0qv40unClXpfxyTid2k2e4XVlpX/JmRmnPeo0UMtfpjfCE21RaXJzykZMVKi7pDaeRWgygvAjYlPPYO6/xbjeNR+2QVB3UpehUeymBavE/4YDJTGzSZlZMlSGnh9i1OZzTO19UY/XIh76lqWIAw8a2JjQDqNHnGVJ731oexDT8XpZs9kU4L0iNt0sPbm/ZkQbAxr4qkiZ276xSJdWkn+d0objHEH6wXHXoTGPFwY0I2ZOKAOcHD2c3lnhMTej1qnCV5ZMrk228jJUMw/UF32Tm450mces77HrKyM3XhARa696VrEPlbNBTTvRjrLenwIDAQAB",
   "version": "0.1.0",
-  "description": "Captures recent Bria API requests + responses and reports them to Excel or Jira.",
+  "description": "Captures recent Bria API requests + responses and reports them to the Model Feedback Hub or Jira.",
   "permissions": [
     "debugger",
     "storage",
     "activeTab",
-    "tabs"
+    "tabs",
+    "identity"
   ],
+  "oauth2": {
+    "client_id": "REPLACE_WITH_GOOGLE_OAUTH_CLIENT_ID.apps.googleusercontent.com",
+    "scopes": ["https://www.googleapis.com/auth/spreadsheets"]
+  },
   "host_permissions": [
     "https://*.bria-api.com/*",
-    "https://*.bria.ai/*"
+    "https://*.bria.ai/*",
+    "https://sheets.googleapis.com/*"
   ],
   "background": {
     "service_worker": "background.js"

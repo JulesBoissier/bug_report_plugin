@@ -97,6 +97,7 @@ function buildExport(cap, children) {
             url: result.url,
             status: result.status,
             requestTimestamp: result.requestTimestamp,
+            requestHeaders: result.requestHeaders || {},
             responseBody: result.responseBody,
             responseBase64: !!result.responseBase64,
           }
@@ -201,15 +202,15 @@ function renderCaptureNode(cap, children) {
     if (!details.hidden) populateDetails(node, cap, children);
   });
 
-  node.querySelector(".send-excel").addEventListener("click", async (e) => {
+  node.querySelector(".send-sheets").addEventListener("click", async (e) => {
     e.stopPropagation();
     const out = node.querySelector(".send-status");
-    out.textContent = "sending…";
+    out.textContent = "reporting…";
     try {
-      const res = await window.BriaReporters.sendToExcel(buildExport(cap, children));
-      out.textContent = res.ok ? "sent to Excel ✓" : "Excel error: " + res.error;
+      const res = await window.BriaReporters.sendToSheets(buildExport(cap, children));
+      out.textContent = res.ok ? "reported ✓" : "Error: " + res.error;
     } catch (err) {
-      out.textContent = "Excel error: " + (err.message || err);
+      out.textContent = "Error: " + (err.message || err);
     }
   });
 

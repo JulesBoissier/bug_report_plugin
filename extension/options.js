@@ -1,4 +1,4 @@
-const FIELDS = ["excelUrl", "jiraUrl", "jiraProjectKey", "jiraEmail", "jiraApiToken"];
+const FIELDS = ["sheetsUrl", "jiraUrl", "jiraProjectKey", "jiraEmail", "jiraApiToken"];
 
 async function load() {
   const cfg = await chrome.storage.sync.get(FIELDS);
